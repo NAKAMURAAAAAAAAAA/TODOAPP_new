@@ -33,7 +33,8 @@ class AddViewController: UIViewController {
     //追加ボタンの設定
     @IBAction func TodoAddButton(_ sender: Any) {
         //変数に入力内容を入れる
-        let todos = TODO(todo: TodoTextField.text!, color: 0 )
+        let todos = TODO(todo: TodoTextField.text!, color: bgcolor )
+        print("todosの中身の確認", todos.todo!, todos.color!)
         TODOS.insert(todos, at: 0)
         //追加ボタンを押したらフィールドを空にする
        TodoTextField.text = ""

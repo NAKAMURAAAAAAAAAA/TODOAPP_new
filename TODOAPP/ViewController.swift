@@ -23,6 +23,12 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let TodoCell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath)
         //変数の中身を作る
         TodoCell.textLabel!.text = TODOS[indexPath.row].todo
+        //背景色を決める
+        if TODOS[indexPath.row].color == 0{
+            TodoCell.backgroundColor = UIColor.blue
+        }else{
+            TodoCell.backgroundColor = UIColor.red
+        }
         //戻り値の設定（表示する中身)
         return TodoCell
     }
