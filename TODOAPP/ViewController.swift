@@ -29,6 +29,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }else{
             TodoCell.backgroundColor = UIColor.red
         }
+        //文字色変える
+        TodoCell.textLabel?.textColor = UIColor.white
+        
         //戻り値の設定（表示する中身)
         return TodoCell
     }
