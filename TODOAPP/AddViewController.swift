@@ -8,8 +8,8 @@
 //  AddViewController.swift
 import UIKit
 
-//変数の設置
-var TodoKobetsunonakami = [String]()
+//インスタンスの作成
+var TODOS = [TODO]()
 
 class AddViewController: UIViewController {
 
@@ -21,11 +21,12 @@ class AddViewController: UIViewController {
     
     @IBAction func TodoAddButton(_ sender: Any) {
         //変数に入力内容を入れる
-        TodoKobetsunonakami.append(TodoTextField.text!)
+        let todos = TODO(todo: TodoTextField.text!, color: 0 )
+        TODOS.insert(todos, at: 0)
         //追加ボタンを押したらフィールドを空にする
        TodoTextField.text = ""
         //変数の中身をUDに追加
-        UserDefaults.standard.set( TodoKobetsunonakami, forKey: "TodoList" )
+        UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: TODOS), forKey: "TodoList")
     }
 
 
