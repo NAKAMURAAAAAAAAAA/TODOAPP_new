@@ -16,9 +16,21 @@ class AddViewController: UIViewController {
     //テキストフィールドの設定
     @IBOutlet weak var TodoTextField: UITextField!
     
-
-    //追加ボタンの設定
+    //セル背景色の配列作成
+    var bgcolor:Int = 0
     
+    //色指定ボタンの設定
+    @IBAction func BlueButton(_ sender: Any) {
+        bgcolor = 0
+        print("青ボタンの確認", bgcolor)
+        
+    }
+    @IBAction func RedButton(_ sender: Any) {
+         bgcolor = 1
+         print("赤ボタンの確認", bgcolor)
+    }
+    
+    //追加ボタンの設定
     @IBAction func TodoAddButton(_ sender: Any) {
         //変数に入力内容を入れる
         let todos = TODO(todo: TodoTextField.text!, color: 0 )
