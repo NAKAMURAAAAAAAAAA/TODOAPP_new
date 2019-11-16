@@ -36,20 +36,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         return TodoCell
     }
     
-    //読み込み処理では、一度Data型で読み込んだものをNSKeyedUnarchiver.unarchiveObjecを使用してアンアーカイブ（デシリアライズ）します
-    func loadSomeObjs() -> [TODO]?{
-            if let loadedData = UserDefaults().data(forKey: "TodoList") {
-                let todos = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as! [TODO]
-                return todos
-            }else {
-                return nil
-            }
-    }
-
-
-    //最初からあるコード
+    //Userdefaultにあるデータを表示する
     override func viewDidLoad() {
         super.viewDidLoad()
+        let loadedData = UserDefaults().data(forKey: "TodoList")
+        if UserDefaults().data(forKey: "TodoList") != nil {
+            TODOS = NSKeyedUnarchiver.unarchiveObject(with: loadedData!) as! [TODO]
+        }
     }
 
     //最初からあるコード

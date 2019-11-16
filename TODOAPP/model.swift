@@ -22,7 +22,7 @@ class TODO: NSObject, NSCoding {
     //エンコード、デコード処理を記述する
     required init?(coder aDecoder: NSCoder) {
         self.todo = aDecoder.decodeObject(forKey: "todo") as! String
-        self.color = aDecoder.decodeObject(forKey: "color") as! Int
+        self.color = aDecoder.decodeObject(forKey: "color") as? Int
     }
     func encode(with aCoder: NSCoder) {
         if let todo = todo { aCoder.encode(todo, forKey: "todo") }
