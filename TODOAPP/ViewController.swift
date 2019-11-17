@@ -6,10 +6,12 @@
 //  Copyright © 2019 Kan Nakamura. All rights reserved.
 //
 //  ViewController.swift
+//TODOを表示する
 import UIKit
 
 //classの継承を追加
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+           
 
     //UITableView、numberOfRowsInSectionの追加(表示するcell数を決める)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,17 +38,39 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         return TodoCell
     }
     
-    //Userdefaultにあるデータを表示する
     override func viewDidLoad() {
+    super.viewDidLoad()
+        if let loadedData = UserDefaults().data(forKey: "TodoList") {
+            let TODOS = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as! [TODO]
+            
+            //テスト
+            for t in TODOS {
+                print("表示の確認",t.todo)
+                print("表示の確認",t.color)
+            }
+            
+        }
+    
+    
+    //Userdefaultにあるデータを表示する
+    /*override func viewDidLoad() {
         super.viewDidLoad()
         let loadedData = UserDefaults().data(forKey: "TodoList")
-        if UserDefaults().data(forKey: "TodoList") != nil {
+        if UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: TODOS), forKey: "TodoList")!= nil {
+            
             TODOS = NSKeyedUnarchiver.unarchiveObject(with: loadedData!) as! [TODO]
         }
-    }
+        
+        //テスト
+        for t in TODOS {
+            print("表示の確認",t.todo)
+            print("表示の確認",t.color)
+        }
+    }*/
 
     //最初からあるコード
-    override func didReceiveMemoryWarning() {
+        func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+}
 }

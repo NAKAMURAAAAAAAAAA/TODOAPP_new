@@ -40,6 +40,11 @@ class AddViewController: UIViewController {
        TodoTextField.text = ""
         //変数の中身をUDに追加
         UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: TODOS), forKey: "TodoList")
+        //テスト
+        for t in TODOS {
+        print("保存の確認",t.todo)
+        print("保存の確認",t.color)
+        }
     }
 
 
